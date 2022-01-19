@@ -1,0 +1,25 @@
+// HELPER FNS
+// const generateId = () => {
+//     const maxId = notes.length > 0
+//       ? Math.max(...days.map(n => n.id))
+//       : 0
+//     return maxId + 1
+//   }
+
+
+// let days = [
+//     {
+//         Sleep: 6,
+//         Work: 6,
+//         Exercise: "Weight Lifting",
+//         NGs: "Yes",
+//         workRating: 7,
+//         healthRating: 8,
+//         overall: 8,
+//         posNotes: "A positive note",
+//         negNotes: "A negative note ",
+//         userID: "Daniel Fleace",
+//         Date: "2022/01/11",
+//         id: 1
+//     }
+// ]
