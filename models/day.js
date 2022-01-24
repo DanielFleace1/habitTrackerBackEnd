@@ -1,17 +1,4 @@
 const mongoose = require('mongoose')
-//import { format, set } from 'date-fns'
-
-const url = process.env.MONGODB_URI
-
-console.log('connecting to', url)
-
-mongoose.connect(url)
-    .then(result =>{
-        console.log('connected to mongo');
-    })
-    .catch((error) => {
-        console.log('error connecting to MongoDB:', error.message)
-    })
 
 const daySchema = new mongoose.Schema({
     Sleep: Number ,
@@ -27,9 +14,6 @@ const daySchema = new mongoose.Schema({
     id: String,
 })
 
-
-// whats this 
-
 daySchema.set('toJSON',{
     transform:(document,returnedObject) => {
       returnedObject.id = returnedObject._id.toString()
@@ -38,4 +22,4 @@ daySchema.set('toJSON',{
     }
 })
 
-module.exports = mongoose.model('day',daySchema)
+module.exports = mongoose.model('Day',daySchema)
