@@ -12,6 +12,10 @@ const daySchema = new mongoose.Schema({
     negNotes:String,
     Date: String, 
     id: String,
+    user:{
+      type:mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
 })
 
 daySchema.set('toJSON',{
