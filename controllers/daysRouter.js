@@ -12,11 +12,15 @@ const getTokenFrom = (req) => {
   return null
 }
 
-daysRouter.get('/',async (req,res)=>{
+daysRouter.get('/',async (req,res)=>{ 
+  const token = getTokenFrom(req)
+  const decodedToken = jwt.verify(token,process.env.SECRET)
+  if(!decodedToken.id){
+    return response.status(401).json({ error: 'token missing or invalid' })
+  }
   const days = await Day
-    .find({}).populate('user',{ username: 1, name: 1 })
+    .find({user: decodedToken.id})//.populate('user',{ username: 1, name: 1 })
     res.json(days)  
-
 })
 
 daysRouter.get('/:id',(req,res) => {
@@ -41,18 +45,16 @@ daysRouter.delete('/:id',(req,res) =>{
 // POST 
 daysRouter.post('/',  async (req,res) => {
   const body = req.body;
-  const token = getTokenFrom(req)
-  console.log('token in POST', token)
+  const token = getTokenFrom(req);
   // verify validity of tokens
   const decodedToken = jwt.verify(token, process.env.SECRET)
   console.log(decodedToken)
   if(!decodedToken.id){
     return response.status(401).json({ error: 'token missing or invalid' })
   }
-  //console.log('body . userId',body.userId)
+  console.log('body . userId',body.userId)
   const user = await User.findById(body.userId)  
   //console.log('user', user)
-
     if(!body){
       return res.status(400).json({
         error: 'contnet missing'
@@ -71,13 +73,15 @@ daysRouter.post('/',  async (req,res) => {
       Date: body.Date,
       user: user._id
     })
-
     day.save()
       .then(savedDay=>{
+        console.log('1')
         user.days = user.days.concat(savedDay._id)
+        console.log('2')
         user.save()
           .then(result =>{
             res.json(savedDay)
+            console.log(savedDay)
           })          
       })
     })
