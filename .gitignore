@@ -1,5 +1,2 @@
 node_modules/
-..env
-.extra_snipets.txt
-.package-lock.json
-.package.json
+.env 
