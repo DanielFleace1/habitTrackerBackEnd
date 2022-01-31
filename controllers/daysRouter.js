@@ -1,6 +1,6 @@
 const daysRouter = require ('express').Router()
 const User = require('../models/users')
-const Day = require('../models/day') // this will change// ??
+const Day = require('../models/day') 
 const jwt = require('jsonwebtoken')
 
 // isolates the token from the authorization header. 
@@ -19,7 +19,7 @@ daysRouter.get('/',async (req,res)=>{
     return response.status(401).json({ error: 'token missing or invalid' })
   }
   const days = await Day
-    .find({user: decodedToken.id})//.populate('user',{ username: 1, name: 1 })
+    .find({user: decodedToken.id})
     res.json(days)  
 })
 
@@ -54,7 +54,6 @@ daysRouter.post('/',  async (req,res) => {
   }
   console.log('body . userId',body.userId)
   const user = await User.findById(body.userId)  
-  //console.log('user', user)
     if(!body){
       return res.status(400).json({
         error: 'contnet missing'
@@ -86,8 +85,6 @@ daysRouter.post('/',  async (req,res) => {
       })
     })
     
-
-// user ID & authorizatoin to be added?f // clean format of this code too. 
 daysRouter.put('/:id',(req,res) => {
     const body = req.body
     console.log(body)
