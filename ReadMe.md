@@ -21,7 +21,7 @@ App functionality:
 
 Next features:
 - From a functionality perspective  this app was launched as a MVP (minimum viable product) as a test of my skills. Three main  features come to mind  that would bring this app to a more widely usable tool. First for  new users to create their own accounts on the front end. Next I would add an interactive data section so that users could select a time frame and  habits they wish to view and their data would be returned in tabular or graphical format for visualization. Third I would make users be able to delete or add to the preset habits that are tracked to make the app more customizable. For example, users could add "time spent reading" or delete any habits they don't want to track. The habits I initially selected were based on what I most frequently think about.
-Additionally I would like/need to spend more time on  error handling and middleware on the backend, writing tests for the front end and the back end, applying scaling and security concerns and the improvement of the user interface.
+Additionally I would like/need to spend more time on  error handling and middleware on the backend, writing tests for the front end and the back end, applying scaling and security concerns and the improvement of the user interface. This app needs work on the css (sizing) on smaller screen sizes. 
 
 Thank you for taking the time to read my ReadMe. Feel free to email danielfleace15@gmail.com with any comments,feedback or concerns!
 
