@@ -11,7 +11,7 @@ Build dependencies
 See package.json in the respective repository for the complete list.
 
 To deploy a local copy
-- To deploy a local copy fork or clone the back end repository to your local machine and run npm install to install the dependencies. You will either need to configure a new database or use my  Mongo database. To do so, create a process variable for MONGODB_URI witht the password = 'mongodb+srv://habitTrackerDb:lRYzytlr5zj8DWeL@cluster0.gjm4o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'. Additionally you need a process variable of SECRET set equal to 'banana' for token verification. Finally specify a port and then run npm run dev to spin up a local copy. 
+- To deploy a local copy fork or clone the back end repository to your local machine and run npm install to install the dependencies. You will either need to configure a new database or use my  Mongo database. To do so, create a process variable for MONGODB_URI witht the password = 'mongodb+srv://habitTrackerDb:lRYzytlr5zj8DWeL@cluster0.gjm4o.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'. Additionally you need a process variable of SECRET set equal to any string for token verification. Finally specify a port and then run npm run dev to spin up a local copy. 
 During development I used the package dotenv for process variables. View the controllers folder to see the current routes I used to make REST requests.
 The front end can be deployed by forking or cloning the front end repository and running npm install and npm start. The URL to make server requests can be edited or specified in the pathway src/components/srcUtils/serverFunctions.js. 
 
