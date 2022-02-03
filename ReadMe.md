@@ -38,9 +38,6 @@ From a functionality perspective this app was launched as a MVP (minimum viable 
 
 Thank you for taking the time to read my ReadMe. Feel free to email danielfleace15@gmail.com with any comments, feedback or concerns!
 
-(LoginScreen.png)
+![Login Screen](LoginScreen.png)
 
-(habitsUserScreen.png)
-
-
-
+![User Screen](habitsUserScreen.png)
