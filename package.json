@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build_ui": "rm -rf build && cd ~/habit_tracker_app_front_end/ && npm run build && cp -r build ~/habit_tracker_app_back_end "
+    "start": "NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=development nodemon index.js",
+    "build_ui": "rm -rf build && cd ~/habit_tracker_app_front_end/ && npm run build && cp -r build ~/habit_tracker_app_back_end ",
+    "test": "NODE_ENV=test jest --verbose --runInBand"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,11 @@
     "mongoose": "^6.1.6"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
+  },
+  "jest": {
+    " testEnviroment": "node"
   }
 }
