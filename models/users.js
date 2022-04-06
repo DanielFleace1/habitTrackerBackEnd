@@ -2,14 +2,10 @@ const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
     username: String,
-    name: String,
+    email: String,
     passwordHash: String,
-    days:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Day'
-    }],
+    habitDocId: String,
 })
-
 userSchema.set('toJSON',{
     transform:(document,returnedObject) => {
         returnedObject.id = returnedObject._id.toString()
@@ -17,7 +13,5 @@ userSchema.set('toJSON',{
         delete returnedObject._v
     }
 })
-
 const User = mongoose.model('User', userSchema)
-
 module.exports = User

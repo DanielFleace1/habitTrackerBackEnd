@@ -1,6 +1,6 @@
 const daysRouter = require ('express').Router()
-const User = require('../models/users')
-const Day = require('../models/day') 
+const User = require('../../models/users')
+const Day = require('../../models/day') 
 const jwt = require('jsonwebtoken')
 
 // isolates the token from the authorization header. 
@@ -45,13 +45,13 @@ daysRouter.delete('/:id',(req,res) =>{
 // POST 
 daysRouter.post('/',  async (req,res) => {
   const body = req.body;
-  const token = getTokenFrom(req);
-  // verify validity of tokens
-  const decodedToken = jwt.verify(token, process.env.SECRET)
+  // const token = getTokenFrom(req);
+  // // verify validity of tokens
+  // const decodedToken = jwt.verify(token, process.env.SECRET)
   
-  if(!decodedToken.id){
-    return response.status(401).json({ error: 'token missing or invalid' })
-  }
+  // if(!decodedToken.id){
+  //   return response.status(401).json({ error: 'token missing or invalid' })
+  // }
 
   const user = await User.findById(body.userId)  
     if(!body){
@@ -61,19 +61,22 @@ daysRouter.post('/',  async (req,res) => {
     }
     const day = new Day( {
       Sleep: body.Sleep,
-      Work: body.Work,
-      Exercise: body.Exercise,
-      NGs: body.NGs,
-      workRating: body.workRating,
-      healthRating: body.healthRating,
-      overall: body.overall,
-      posNotes: body.posNotes,
-      negNotes:body.negNotes,
-      Date: body.Date,
+      // Work: body.Work,
+      // Exercise: body.Exercise,
+      // NGs: body.NGs,
+      // workRating: body.workRating,
+      // healthRating: body.healthRating,
+      // overall: body.overall,
+      // posNotes: body.posNotes,
+      // negNotes:body.negNotes,
+      // Date: body.Date,
       user: user._id
     })
     day.save()
       .then(savedDay=>{
+        console.log('enter saved day')
+        console.log("savedday:",savedDay)
+        console.log('savedDay type of id', typeof(savedDay._id))
         user.days = user.days.concat(savedDay._id)
         user.save()
           .then(result =>{
