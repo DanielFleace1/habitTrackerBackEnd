@@ -72,24 +72,6 @@ habitsRouter.post('/' ,
  * HabitId - Find User Document - URL Parameter
  */
 
-    // Helper Function: If it works move this":::
-        // Format Date
-        function formatDate(date) {
-            let d = date//new Date(date),
-                month = '' + (d.getMonth() + 1),
-                day = '' + d.getDate(),
-                year = d.getFullYear();
-            if (month.length < 2) 
-                month = '0' + month;
-            if (day.length < 2) 
-                day = '0' + day;
-                return [year, month, day].join('-');
-
-            }   
-
-
-
-
 habitsRouter.put('/:id', 
     [
     body('habitName').trim().escape(),
