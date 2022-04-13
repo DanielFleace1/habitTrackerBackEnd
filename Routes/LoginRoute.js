@@ -4,6 +4,12 @@ const loginRouter = require('express').Router()
 const { body, validationResult } = require('express-validator');
 const User = require('../models/users')
 
+
+/**
+ * POST - Route Used to Login Suer
+ * @Params from Client Request
+ * Email, Password to Login
+ */
 loginRouter.post('/', 
     [
         body('email').isEmail().trim().escape().normalizeEmail(),
@@ -17,32 +23,26 @@ loginRouter.post('/',
     }
 
     const {password,email} = req.body
-
-
     const user = await User.findOne({ email })
-
-
     if(!user){
         return res.status(401).json({
             error: 'Email is not registered with Habits.'
         })
     }
     const passwordCorrect =  await bcrypt.compare(password, user.passwordHash)
-
-    // password incorrect 
+    // Password Incorrect 
     if(!passwordCorrect){
         return res.status(401).json({
             error: 'Incorrect Password.'
         })
     }
-    // if both pass
+    // UserName & Email Pass
     const userForToken = {
         username: user.username,
         id: user._id
     }    
-    // sign token 
+    // Sign Token 
     const token = jwt.sign(userForToken,process.env.SECRET, { expiresIn: 60*60 })
-    // respond with response
     res
         .status(200)
         .send({token,username: user.username, name:user.name, userId: user._id,habitId: user.habitDocId})

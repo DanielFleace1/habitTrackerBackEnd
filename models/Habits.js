@@ -1,15 +1,14 @@
 
 const mongoose = require('mongoose');
-
-// One document per user approach
+// One Document Per User, used to Store Habit Data
 const habitSchema = new mongoose.Schema({
    userId: String, 
    habitAry:[
       {
          habitType:String,
          habitName: String,
-         habitData:[{ value: String || Number, date: Date }],
-         // this needs to have an id.
+         // habitData:[{ value: String || Number, date: Date }],
+         habitData:[{ value: String || Number, date: String }],
       }
    ]
 })
@@ -20,7 +19,6 @@ habitSchema.set('toJSON',{
        delete returnedObject._v
    }
 })
-
 const Habit = mongoose.model('Habit', habitSchema);
 module.exports = Habit
 
